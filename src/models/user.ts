@@ -17,6 +17,10 @@ export const userSchema = new Schema(
       type: Number,
       default: 10,
     },
+    lastRedeem: {
+      type: Date,
+      default: new Date(),
+    },
     album: {
       type: [cardSchema],
       default: [],

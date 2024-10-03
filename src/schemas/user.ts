@@ -13,6 +13,10 @@ export const userSchema = z.object({
     invalid_type_error: "Packs must be a number",
     required_error: "Packs is required",
   }),
+  lastRedeem: z.date({
+    invalid_type_error: "Last redeem must be a date",
+    required_error: "Last redeem is required",
+  }),
   album: z.array(
     z.any()
   ),

@@ -7,8 +7,10 @@ export const createUserRouter = () => {
   const userController = new UserController()
 
   userRouter.get("/me", userController.getUser)
-  userRouter.patch("/update", userController.updateUser)
+  userRouter.get("/cards", userController.getCards)
   userRouter.get("/pack", userController.openPack)
+  userRouter.patch("/update", userController.updateUser)
+  userRouter.patch("/redeem", userController.updateLastRedeem)
   userRouter.patch("/paste/:cardId", userController.pasteCard)
 
   return userRouter

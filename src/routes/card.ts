@@ -6,11 +6,8 @@ export const createCardRouter = () => {
 
   const cardController = new CardController()
 
-  cardRouter.post("/player", cardController.createPlayer)
-  cardRouter.post("/specialcard", cardController.createSpecialCard)
-  cardRouter.post("/stadium", cardController.createStadium)
-  cardRouter.post("/badge", cardController.createBadge)
-  cardRouter.post("/squad", cardController.createSquad)
+  cardRouter.post("/create", cardController.createCard)
+  cardRouter.post("/bulk", cardController.bulkCreate)
 
   return cardRouter
 }

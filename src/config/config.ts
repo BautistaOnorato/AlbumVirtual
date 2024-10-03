@@ -9,6 +9,8 @@ export const MONGO_URI = process.env.MONGO_URI || ''
 export const MONGO_OPTIONS: mongoose.ConnectOptions = { retryWrites: true, w: "majority" }
 export const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 export const GOOGLE_SECRET = process.env.GOOGLE_SECRET || '';
+export const COOKIE_SECRET = process.env.COOKIE_SECRET || '';
+export const CLIENT_URL = process.env.CLIENT_URL || '';
 export const PORT = process.env.PORT ?? 8000;
 export const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || "localhost";
 
@@ -20,6 +22,14 @@ export const mongo = {
 export const google = {
   GOOGLE_CLIENT_ID,
   GOOGLE_SECRET,
+}
+
+export const client = {
+  CLIENT_URL,
+}
+
+export const cookie = {
+  COOKIE_SECRET,
 }
 
 export const SERVER = {

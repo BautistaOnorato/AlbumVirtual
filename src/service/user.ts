@@ -32,29 +32,49 @@ export class UserService {
 
   async openPack(user: any) {
     try {
+      if (user.packs < 1) {
+        return new Error("No packs available")
+      }
       const cards = await this.cardService.getCards()
       if (!cards) {
-        throw new Error("Cards not found")
+        return new Error("Cards not found")
       }
       user.cards = [...user.cards, ...cards]
       user.packs = user.packs - 1
       await this.userRepository.updateUser(user, user.id)
       return cards
     } catch (error) {
+      logging.error(error)
+      return error
+    }
+  }
+
+  async updateLastRedeem(user: any) {
+    try {
+      user.lastRedeem = new Date()
+      user.packs += 10
+      await this.userRepository.updateUser(user, user.id)
+      return user
+    } catch (error) {
+      logging.error(error)
       return error
     }
   }
 
   async pasteCard(user: any, cardId: string) {
     try {
-      const card = user.cards.find((c: any) => c.id === cardId)
-      if (!card) {
-        return null
+      const card = user.cards.findIndex((c: any) => c.id === cardId)
+      if (card < 0) {
+        return new Error("Card not found")
       }
-      user.cards = user.cards.filter((c: any) => c.id !== cardId)
-      user.album.push(card)
+      if (user.album.findIndex((c: any) => c.id === cardId) >= 0) {
+        return new Error("Card already in album")
+      }
+      const result = user.cards[card]
+      user.album.push(result)
+      user.cards.splice(card, 1)
       await this.userRepository.updateUser(user, user.id)
-      return card
+      return result
     } catch (error) {
       logging.error(error)
       return error

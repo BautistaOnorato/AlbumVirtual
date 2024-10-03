@@ -51,7 +51,7 @@ export const Main = async () => {
       saveUninitialized: true,
       resave: false,
       cookie: {
-        maxAge: 60000 * 60
+        maxAge: 60000 * 60 * 24 * 14 * 3, 
       },
       store: MongoStore.create({
         client: mongoose.connection.getClient(),
