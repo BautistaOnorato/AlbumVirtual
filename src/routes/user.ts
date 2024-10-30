@@ -7,6 +7,7 @@ export const createUserRouter = () => {
   const userController = new UserController()
 
   userRouter.get("/me", userController.getUser)
+  userRouter.get("/short", userController.getShortUser)
   userRouter.get("/cards", userController.getCards)
   userRouter.get("/pack", userController.openPack)
   userRouter.patch("/update", userController.updateUser)

@@ -80,4 +80,18 @@ export class UserService {
       return error
     }
   }
+
+  async getCards(user: any) {
+    try {
+      const albumCards = user.album
+      const newCards = user.cards.filter((c: any) => albumCards.findIndex((ac: any) => ac.id === c.id) < 0)
+      return {
+        album: albumCards,
+        new: newCards
+      }
+    } catch (error) {
+      logging.error(error)
+      return error
+    }
+  }
 }

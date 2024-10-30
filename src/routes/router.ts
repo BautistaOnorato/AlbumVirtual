@@ -5,6 +5,6 @@ import { createUserRouter } from "./user"
 
 export const createRoutes = (app: Express) => {
   app.use("/auth", createAuthRouter())
-  app.use("/card", createCardRouter())
+  // app.use("/card", createCardRouter())
   app.use("/user", createUserRouter())
 }
