@@ -4,6 +4,9 @@ import { createCardRouter } from "./card"
 import { createUserRouter } from "./user"
 
 export const createRoutes = (app: Express) => {
+  app.get("/", (req, res) => {
+    res.send("Hello World!")
+  })
   app.use("/ping", (req, res) => {
     res.send("pong")
   })
