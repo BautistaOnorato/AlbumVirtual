@@ -4,7 +4,8 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "jest --config jest.config.ts --coverage",
-    "build": "rm -rf build/ && npx tsc -p tsconfig.build.json"
+    "build": "rm -rf build/ && npx tsc -p tsconfig.build.json",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
